@@ -5,11 +5,11 @@ package yr
 import (
 
         "testing"
-        "bufio"
-	"encoding/csv"
-	"os"
-	"strings"
-	"io"
+        //"bufio"
+	//"encoding/csv"
+	//"os"
+	//"strings"
+	//"io"
 )
 
 
@@ -26,7 +26,7 @@ func  TestLesAntallLinjerFil(t *testing.T) {
 
 tests := []test{
 
-{input: "kjevik-temp-celsius-20220318-20230318.csv", want:  1656},
+{input: "kjevik-temp-celsius-20220318-20230318.csv", want:  16756},
 
 }
 
