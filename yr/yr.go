@@ -3,16 +3,16 @@ package yr
 
 import (
 
-        //"fmt"
-        //"strconv"
-        //"strings"
-        //"errors"
+        "fmt"
+        "strconv"
+        "strings"
+        "errors"
         "log"
         "os"
-        //"io"
+        "io"
         "bufio"
-        //"github.com/ViktorFjuk/funtemps/conv"
-
+        "github.com/ViktorFjuk/funtemps/conv"
+	"encoding/csv"
 )
 
 
@@ -42,4 +42,22 @@ antall++
 return antall
 
 }
+
+func KonverteringAvLinjer() {
+
+inputFil, err := os.Open("kjevik-temp-celsius-20220318-20230318.csv")
+
+if err != nil {
+
+	fmt.Println("error", err)
+
+}
+defer inputFil.Close()
+
+inputScanner := bufio.NewScanner(inputFil)
+
+outputFile, err := os.Create("kjevik-temp-fahr-20220318-20230319.csv")
+
+if err !=nil {
+	fmt.Println("error", err)
 
