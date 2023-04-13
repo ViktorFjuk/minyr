@@ -43,6 +43,7 @@ return antall
 
 }
 
+
 func KonverteringAvLinjer() {
 
 //Apner input filen
@@ -62,7 +63,7 @@ defer inputFil.Close()
 
 //Lager output filen
 
-outputFil, err := os.Create("kjevik-temp-fahr-20220318-20230319.csv")
+outputFil, err := os.Create("kjevik-temp-fahr-20220318-20230318.csv")
 
 if err !=nil {
 	fmt.Println("error", err)
