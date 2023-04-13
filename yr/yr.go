@@ -18,7 +18,7 @@ import (
 
 func LesAntallLinjerFil(filename string) int{
 
-src, err := os.Open("/home/minyr/yr/kjevik-temp-celsius-20220318-20230318.csv")
+src, err := os.Open("/home/minyr/kjevik-temp-celsius-20220318-20230318.csv")
 
 if err != nil {
 
@@ -48,7 +48,7 @@ func KonverteringAvLinjer() {
 //Apner input filen
 
 
-inputFil, err := os.Open("kjevik-temp-celsius-20220318-20230318.csv")
+inputFil, err := os.Open("/home/minyr/kjevik-temp-celsius-20220318-20230318.csv")
 
 if err != nil {
 
