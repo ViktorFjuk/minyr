@@ -6,13 +6,13 @@ import (
         "fmt"
         "strconv"
         "strings"
-        "errors"
+        //"errors"
         "log"
         "os"
-        "io"
+        //"io"
         "bufio"
         "github.com/ViktorFjuk/funtemps/conv"
-	"encoding/csv"
+	//"encoding/csv"
 )
 
 
@@ -45,6 +45,9 @@ return antall
 
 func KonverteringAvLinjer() {
 
+//Apner input filen
+
+
 inputFil, err := os.Open("kjevik-temp-celsius-20220318-20230318.csv")
 
 if err != nil {
@@ -54,10 +57,89 @@ if err != nil {
 }
 defer inputFil.Close()
 
-inputScanner := bufio.NewScanner(inputFil)
 
-outputFile, err := os.Create("kjevik-temp-fahr-20220318-20230319.csv")
+
+
+//Lager output filen
+
+outputFil, err := os.Create("kjevik-temp-fahr-20220318-20230319.csv")
 
 if err !=nil {
 	fmt.Println("error", err)
+
+}
+
+defer outputFil.Close()
+
+
+outputWriter := bufio.NewWriter(outputFil)
+
+
+inputScanner := bufio.NewScanner(inputFil)
+
+
+
+for inputScanner.Scan() {
+
+linje := inputScanner.Text()
+
+
+konvertertLinje := ProsesserLinjer(linje)
+
+
+_, err := outputWriter.WriteString(konvertertLinje + "\n")
+
+if err != nil {
+
+	fmt.Println("error", err)
+
+}
+
+}
+
+err = outputWriter.Flush()
+
+if err != nil {
+
+	fmt.Println("error", err)
+}
+
+}
+
+
+
+
+
+
+
+func ProsesserLinjer(linje string) string {
+
+	elementer := strings.Split(linje, ",")
+
+
+celsiusStr := elementer[len(elementer)-1]
+
+celsius, err := strconv.ParseFloat(celsiusStr, 64)
+
+if err != nil {
+
+fmt.Println("error", err)
+
+}
+
+
+fahrenheit := conv.CelsiusToFahrenheit(celsius)
+
+elementer[len(elementer)-1] = fmt.Sprintf("%.2f", fahrenheit)
+
+
+konvertertLinje := strings.Join(elementer, ",")
+
+return konvertertLinje
+
+}
+
+
+
+
 

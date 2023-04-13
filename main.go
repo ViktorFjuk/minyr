@@ -1,11 +1,15 @@
 package main
 
 
-import 	"fmt"
+import ("fmt"
+	"github.com/ViktorFjuk/minyr/yr"
 
+)
 
 func main() {
 
-fmt.Println("Fuck you")
+	yr.KonverteringAvLinjer()
+
+	fmt.Println("Konvertering ferdig, vennligst sjekk den nye filen")
 
 }
