@@ -53,7 +53,7 @@ inputFil, err := os.Open("/home/minyr/kjevik-temp-celsius-20220318-20230318.csv"
 
 if err != nil {
 
-	fmt.Println("error", err)
+	log.Fatal(err)
 
 }
 defer inputFil.Close()
@@ -63,8 +63,8 @@ defer inputFil.Close()
 
 outputFil, err := os.Create("kjevik-temp-fahr-20220318-20230318.csv")
 
-if err !=nil {
-	fmt.Println("error", err)
+if err != nil {
+	log.Fatal(err)
 
 }
 
@@ -90,7 +90,7 @@ _, err := outputWriter.WriteString(konvertertLinje + "\n")
 
 if err != nil {
 
-	fmt.Println("error", err)
+	log.Fatal(err)
 
 }
 
@@ -100,7 +100,7 @@ err = outputWriter.Flush()
 
 if err != nil {
 
-	fmt.Println("error", err)
+	log.Fatal(err)
 }
 
 }
@@ -134,7 +134,7 @@ celsius, err := strconv.ParseFloat(celsiusStr, 64)
 
 if err != nil {
 
-fmt.Println("error", err)
+log.Fatal(err)
 
 }
 
