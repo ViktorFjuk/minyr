@@ -59,8 +59,6 @@ if err != nil {
 defer inputFil.Close()
 
 
-
-
 //Lager output filen
 
 outputFil, err := os.Create("kjevik-temp-fahr-20220318-20230318.csv")
@@ -109,14 +107,20 @@ if err != nil {
 
 
 
-
-
-
-
 func ProsesserLinjer(linje string) string {
 
 
 if strings.Contains(linje, "Navn;Stasjon;Tid(norsk normaltid);Lufttemperatur") {
+
+return linje
+
+}
+
+
+
+if strings.Contains(linje, "Data er gyldig per 18.03.2023 (CC BY 4.0), Meteorologisk institutt (MET);;;") {
+
+linje = strings.Replace(linje, "Data er gyldig per 18.03.2023 (CC BY 4.0), Meteorologisk institutt (MET);;;", "Data er basert på gyldig data (per 18.03.2023) (CC BY 4.0) fra Meteorologisk institutt (MET); endringen er gjort av Viktor Fjuk", 1)
 
 return linje
 
