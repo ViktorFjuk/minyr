@@ -141,7 +141,7 @@ log.Fatal(err)
 
 fahrenheit := conv.CelsiusToFahrenheit(celsius)
 
-elementer[len(elementer)-1] = fmt.Sprintf("%.2f", fahrenheit)
+elementer[len(elementer)-1] = fmt.Sprintf("%.1f", fahrenheit)
 
 
 konvertertLinje := strings.Join(elementer, ";")
