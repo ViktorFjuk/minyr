@@ -41,21 +41,37 @@ for _, tc := range tests {
 }
 }
 
-//func TestKonverteringAvLinjer(t *testing.T) {
+func TestKonverteringAvLinjer(t *testing.T) {
 
-//	type test struct {
+	type test struct {
 
-//	input string
+	input string
 
-//	want int
-//}
+	want string
+}
 
-//tests := []test{
+tests := []test{
 
-//{input: "Kjevik;SN39040;18.03.2022 01:50;6", want: "Kjevik;SN39040;18.03.2022 01:50;42.8"},
-//{input: "Kjevik;SN39040;07.03.2023 18:20;0", want: "Kjevik;SN39040;07.03.2023 18:20;32.0"},
-//{input: "Kjevik;SN39040;08.03.2023 02:20;-11", want: "Kjevik;SN39040;08.03.2023 02:20;12.2"},
+{input: "Kjevik;SN39040;18.03.2022 01:50;6", want: "Kjevik;SN39040;18.03.2022 01:50;42.8"},
+{input: "Kjevik;SN39040;07.03.2023 18:20;0", want: "Kjevik;SN39040;07.03.2023 18:20;32.0"},
+{input: "Kjevik;SN39040;08.03.2023 02:20;-11", want: "Kjevik;SN39040;08.03.2023 02:20;12.2"},
+{input: "Data er gyldig per 18.03.2023 (CC BY 4.0), Meteorologisk institutt (MET);;;", want: "Data er basert på gyldig data (per 18.03.2023) (CC BY 4.0) fra Meteorologisk institutt (MET); endringen er gjort av Viktor Fjuk"},
 
-//}
+}
 
 
+for _, tc := range tests {
+
+got := ProsesserLinjer(tc.input)
+
+if !(tc.want == got) {
+
+	t.Errorf("expected: %v, got: %v", tc.want, got)
+
+}
+}
+}
+
+
+//Siste manglende testen
+//func test gjennomsnitt 
