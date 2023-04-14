@@ -115,8 +115,14 @@ if err != nil {
 
 func ProsesserLinjer(linje string) string {
 
-	elementer := strings.Split(linje, ",")
 
+if strings.Contains(linje, "Navn;Stasjon;Tid(norsk normaltid);Lufttemperatur") {
+
+return linje
+
+}
+
+elementer := strings.Split(linje, ";")
 
 celsiusStr := elementer[len(elementer)-1]
 
@@ -134,7 +140,7 @@ fahrenheit := conv.CelsiusToFahrenheit(celsius)
 elementer[len(elementer)-1] = fmt.Sprintf("%.2f", fahrenheit)
 
 
-konvertertLinje := strings.Join(elementer, ",")
+konvertertLinje := strings.Join(elementer, ";")
 
 return konvertertLinje
 
