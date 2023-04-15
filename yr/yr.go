@@ -152,5 +152,121 @@ return konvertertLinje
 
 
 
+func GjennomsnittsBeregningCelsius() float64 {
+
+
+fil, err := os.Open("/home/minyr/kjevik-temp-celsius-20220318-20230318.csv")
+
+if err != nil {
+
+log.Fatal(err)
+
+}
+
+defer fil.Close()
+
+
+var adderteTemperaturer float64
+
+var antallTemperaturer int
+
+
+scanner := bufio.NewScanner(fil)
+
+for scanner.Scan() {
+
+	linje := scanner.Text()
+
+	elementer := strings.Split(linje, ";")
+
+	if len(elementer) >= 4 {
+
+	temperatur, err := strconv.ParseFloat(elementer[3], 64)
+
+	if err == nil {
+
+	adderteTemperaturer += temperatur
+
+	antallTemperaturer++
+}
+}
+}
+
+	if antallTemperaturer > 0 {
+
+	gjennomsnittsTemperatur :=  adderteTemperaturer / float64(antallTemperaturer)
+
+	fmt.Printf ("Gjennomsnittstemperaturen i celsius er: %.1f\n", gjennomsnittsTemperatur)
+}
+
+	return 0
+
+}
+
+
+
+func GjennomsnittsBeregningFahr() float64 {
+
+fil, err := os.Open("/home/minyr/kjevik-temp-celsius-20220318-20230318.csv")
+
+if err != nil {
+
+	log.Fatal(err)
+
+}
+
+defer fil.Close()
+
+
+var adderteTemperaturer float64
+
+var antallTemperaturer int
+
+scanner := bufio.NewScanner(fil)
+
+for scanner.Scan() {
+
+linje := scanner.Text()
+
+elementer := strings.Split(linje, ";")
+
+if len (elementer) >= 4 {
+
+temperatur, err := strconv.ParseFloat(elementer[3], 64)
+
+if err == nil {
+
+	adderteTemperaturer += temperatur
+	antallTemperaturer++
+
+}
+}
+}
+
+if antallTemperaturer > 0 {
+
+	gjennomsnittsTemperatur := adderteTemperaturer / float64(antallTemperaturer)
+
+	fahrenheitGjennomsnitt := conv.CelsiusToFahrenheit(gjennomsnittsTemperatur)
+
+	fmt.Printf ("Gjennomsnittstemperaturen i fahrenheit er: %.1f\n", fahrenheitGjennomsnitt)
+
+	return fahrenheitGjennomsnitt
+
+}
+
+return 0
+
+}
+
+
+
+
+
+
+
+
+
+
 
 

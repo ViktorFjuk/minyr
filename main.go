@@ -19,18 +19,15 @@ scanner := bufio.NewScanner(os.Stdin)
 
 for {
 
-
-	fmt.Println("Velg average, convert eller exit for å avslutte programmet")
+	fmt.Println("Velg average, convert eller exit")
 
 	if !scanner.Scan() {
 
 		break
 
-
 	}
 
 	input = scanner.Text()
-
 
 	switch input {
 
@@ -40,12 +37,38 @@ for {
 
 	fmt.Println("Konvertering ferdig. Sjekk den nye filen som ble opprettet")
 
+	case "average":
 
-	case "exit":
+	fmt.Println("Velg enhet for gjennomsnittstemperatur (c/f):")
 
-	fmt.Println("Avslutter program")
-	return
+	if !scanner.Scan() {
 
+	break
+
+	}
+
+	enhet := scanner.Text()
+
+	switch enhet {
+
+	case "c":
+
+	yr.GjennomsnittsBeregningCelsius()
+
+	case "f":
+
+	yr.GjennomsnittsBeregningFahr()
+
+	default:
+
+	fmt.Println("Ugyldig enhet valgt. Velg c eller f.")
+
+}
+
+ 	case "exit":
+
+        fmt.Println("Avslutter program")
+        return
 }
 }
 }
