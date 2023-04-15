@@ -17,6 +17,7 @@ var input string
 scanner := bufio.NewScanner(os.Stdin)
 
 
+
 for {
 
 	fmt.Println("Velg average, convert eller exit")
