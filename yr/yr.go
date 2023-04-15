@@ -196,9 +196,11 @@ for scanner.Scan() {
 
 	gjennomsnittsTemperatur :=  adderteTemperaturer / float64(antallTemperaturer)
 
-	fmt.Printf ("Gjennomsnittstemperaturen i celsius er: %.1f\n", gjennomsnittsTemperatur)
-}
+	fmt.Printf ("Gjennomsnittstemperaturen i celsius er: %.2f\n", gjennomsnittsTemperatur)
 
+
+
+}
 	return 0
 
 }
@@ -249,7 +251,7 @@ if antallTemperaturer > 0 {
 
 	fahrenheitGjennomsnitt := conv.CelsiusToFahrenheit(gjennomsnittsTemperatur)
 
-	fmt.Printf ("Gjennomsnittstemperaturen i fahrenheit er: %.1f\n", fahrenheitGjennomsnitt)
+	fmt.Printf ("Gjennomsnittstemperaturen i fahrenheit er: %.2f\n", fahrenheitGjennomsnitt)
 
 	return fahrenheitGjennomsnitt
 
