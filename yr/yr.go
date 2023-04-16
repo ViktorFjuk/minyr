@@ -46,6 +46,17 @@ return antall
 
 func KonverteringAvLinjer() {
 
+
+	regenererFil := SjekkOmFahrFilEksisterer()
+
+	if !regenererFil {
+
+		return
+
+		}
+
+
+
 //Apner input filen
 
 
@@ -103,7 +114,12 @@ if err != nil {
 	log.Fatal(err)
 }
 
+fmt.Println("Konvertering ferdig. Sjekk filen som ble opprettet")
+
+
 }
+
+
 
 
 
@@ -263,8 +279,45 @@ return 0
 
 
 
+func SjekkOmFahrFilEksisterer() bool {
+
+if _, err := os.Stat("kjevik-temp-fahr-20220318-20230318.csv"); err == nil {
+
+	fmt.Println("Filen eksisterer fra tidligere. Vil du regenerere filen? (j/n)")
+
+	var regenerer string
+
+	fmt.Scanln(&regenerer)
+
+	if strings.ToLower(regenerer) == "j" || strings.ToLower(regenerer) == "J" {
+
+	err := os.Remove("kjevik-temp-fahr-20220318-20230318.csv")
+
+		if err != nil {
+
+			log.Fatal(err)
+
+			}
+	return true
+	} else if strings.ToLower(regenerer) == "n" || strings.ToLower(regenerer) == "N" {
+
+		fmt.Println("Avbryter")
 
 
+	return false
+
+	} else {
+
+	fmt.Println("Ugyldig input. Skriv 'j' for ja eller 'n' for nei.")
+
+	return false
+	}
+	}
+
+
+	return true
+
+	}
 
 
 

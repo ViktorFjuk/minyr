@@ -36,8 +36,6 @@ for {
 
 	yr.KonverteringAvLinjer()
 
-	fmt.Println("Konvertering ferdig. Sjekk den nye filen som ble opprettet")
-
 	case "average":
 
 	fmt.Println("Velg enhet for gjennomsnittstemperatur (c/f):")
