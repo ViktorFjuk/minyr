@@ -6,15 +6,13 @@ import (
         "fmt"
         "strconv"
         "strings"
-        //"errors"
         "log"
         "os"
-        //"io"
         "bufio"
         "github.com/ViktorFjuk/funtemps/conv"
-	//"encoding/csv"
 )
 
+//Funksjon skapt for en test
 
 func LesAntallLinjerFil(filename string) int{
 
@@ -51,11 +49,9 @@ func KonverteringAvLinjer() {
 
 	if !regenererFil {
 
-		return
+	return
 
-		}
-
-
+	}
 
 //Apner input filen
 
@@ -118,9 +114,6 @@ fmt.Println("Konvertering ferdig. Sjekk filen som ble opprettet")
 
 
 }
-
-
-
 
 
 func ProsesserLinjer(linje string) string {
@@ -318,10 +311,3 @@ if _, err := os.Stat("kjevik-temp-fahr-20220318-20230318.csv"); err == nil {
 	return true
 
 	}
-
-
-
-
-
-
-
